@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="redirect_form">
+        <form action="api_url" method="post">
+                    <input type="hidden" name="key_secret" t-att-value="provider_id"/>
+                    <input type="hidden" name="amount" t-att-value="provider_code"/>
+                    <input type="hidden" name="currency" t-att-value="currency"/>
+                    <input type="hidden" name="reference" t-att-value="reference"/>
+                    <button type="submit">Pay Now</button>
+                </form>
+    </template>
+    <template id="token_inline_form">
+        <t t-set="warning" t-value="token_sudo._razorpay_get_limit_exceed_warning(amount, currency)"/>
+        <div t-if="warning" t-out="warning" class="alert alert-danger mb-0"/>
+    </template>
+</odoo>

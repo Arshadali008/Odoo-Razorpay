@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="payment_provider_razorpay_plus" model="payment.provider">
+        <field name="name">Razorpay Plus</field>
+        <field name="image_128" type="base64" file="payment_razorpay/static/description/icon.png"/>
+        <field name="module_id" ref="base.module_payment_razorpay_plus"/>
+        <!-- https://razorpay.com/docs/payments/payment-methods/#supported-payment-methods -->
+        <field name="payment_method_ids"
+               eval="[Command.set([
+                         ref('payment.payment_method_card'),
+                         ref('payment.payment_method_netbanking'),
+                         ref('payment.payment_method_upi'),
+                         ref('payment.payment_method_wallets_india'),
+                         ref('payment.payment_method_paylater_india'),
+                         ref('payment.payment_method_emi_india'),
+                     ])]"
+        />
+        <field name="code">razorpay_plus</field>
+        <field name="token_inline_form_view_id" ref="token_inline_form"/>
+        <field name="redirect_form_view_id" ref="payment_razorpay_plus.redirect_form"/>
+    </record>
+</odoo>
