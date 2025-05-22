@@ -33,7 +33,6 @@ paymentForm.include({
                 this._super(...arguments);
                 return;
         }
-        console.log("2")
         return Object.assign({}, processingValues, {
             'key': processingValues['razorpay_public_token'] || processingValues['razorpay_key_id'],
             'customer_id': processingValues['razorpay_customer_id'],
